@@ -18,4 +18,10 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 #   }
 # }
 
-explore: planets {}
+explore: planets {
+  join: moons {
+    relationship: one_to_many
+    sql_on: ${planets.planet_id} = ${moons.moons_planet_id} ;;
+  }
+
+}
