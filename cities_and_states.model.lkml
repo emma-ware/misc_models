@@ -11,10 +11,20 @@ explore: city_and_state_table {
 view: city_and_state_table {
   derived_table: {
     sql:
-          (select 'NYC' as city, 'New York' as state, 55 as users) union all
-          (select 'Buffalo' as city, 'New York' as state, 5 as users) union all
-          (select 'Jersey City' as city, 'New Jersey' as state, 12 as users) union all
-          (select 'Hoboken' as city, 'New Jersey' as state, 12 as users)
+          (select 1 as user_id, 'NYC' as city, 'New York' as state) union all
+          (select 2 as user_id, 'NYC' as city, 'New York' as state) union all
+          (select 3 as user_id, 'NYC' as city, 'New York' as state) union all
+          (select 4 as user_id, 'NYC' as city, 'New York' as state) union all
+          (select 5 as user_id, 'NYC' as city, 'New York' as state) union all
+          (select 6 as user_id, 'Buffalo' as city, 'New York' as state) union all
+          (select 7 as user_id, 'Buffalo' as city, 'New York' as state) union all
+          (select 8 as user_id, 'Buffalo' as city, 'New York' as state) union all
+          (select 9 as user_id, 'Jersey City' as city, 'New Jersey' as state) union all
+          (select 10 as user_id, 'Jersey City' as city, 'New Jersey' as state) union all
+          (select 11 as user_id, 'Jersey City' as city, 'New Jersey' as state) union all
+          (select 12 as user_id, 'Jersey City' as city, 'New Jersey' as state) union all
+          (select 13 as user_id, 'Hoboken' as city, 'New Jersey' as state) union all
+          (select 14 as user_id, 'Hoboken' as city, 'New Jersey' as state)
          ;;
   }
 
@@ -28,15 +38,14 @@ view: city_and_state_table {
     sql: ${TABLE}.state ;;
   }
 
-  dimension: users {
+  dimension: user_id {
     type: number
-    sql: ${TABLE}.users ;;
+    sql: ${TABLE}.user_id ;;
   }
 
 
   measure: count {
-    type: number
-    sql: ${TABLE}.users ;;
+    type: count
   }
 
 
